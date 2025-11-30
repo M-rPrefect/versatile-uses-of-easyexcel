@@ -1,0 +1,44 @@
+server:
+  port: 8089
+  tomcat:
+    max-swallow-size: -1
+spring:
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 200MB
+      max-request-size: -1
+  application:
+    name: dream-world
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/dream_world?rewriteBatchedStatements=true&useServerPrepStmts=true&cachePrepStmts=true&useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
+    username: root
+    password: 221700
+    hikari:
+      # 增加最大连接数
+      maximum-pool-size: 30
+      # 增加最小空闲连接数
+      minimum-idle: 5
+      # 减少连接超时时间，快速失败
+      connection-timeout: 1000
+      # 设置连接最大存活时间
+      max-lifetime: 1800000
+
+#mybatis-plus:
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+thread:
+  pool:
+    core:
+      size: 12
+    max:
+      size: 24
+    queue:
+      capacity: 100
+    keep:
+      alive:
+        seconds: 60
+
+
